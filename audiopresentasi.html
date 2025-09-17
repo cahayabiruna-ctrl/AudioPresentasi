@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluang Usaha Modern - Difi Team & Opalpi</title>
+    <style>
+        /* General Styling */
+        :root {
+            --primary-color: #0d47a1; /* Biru Tua */
+            --secondary-color: #1565c0; /* Biru Sedang */
+            --accent-color: #ffd700; /* Emas */
+            --text-color: #333;
+            --light-bg: #f4f7f9;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        /* Container */
+        .container {
+            max-width: 960px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(rgba(13, 71, 161, 0.8), rgba(13, 71, 161, 0.8)), url('https://images.unsplash.com/photo-1554224155-1696413565d3?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .speaker-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .speaker-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+        }
+
+        /* Audio Player Styling */
+        .audio-player-container {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        audio {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Sections Styling */
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+        
+        .highlight {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 700px;
+            font-style: italic;
+            color: var(--secondary-color);
+            padding: 20px;
+            border-left: 5px solid var(--accent-color);
+            background-color: var(--light-bg);
+            border-radius: 5px;
+        }
+
+        /* Grid for Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .card .icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+        }
+
+        /* Call to Action (CTA) Button */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #e6c300;
+            transform: translateY(-2px);
+        }
+        
+        /* Timestamps */
+        .timestamps {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .timestamps a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .timestamps a:hover {
+            color: var(--accent-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header id="home">
+        <div class="container">
+            <h1>Wujudkan Kebebasan Finansial Anda Hari Ini</h1>
+            <p>Sebuah konsep usaha modern yang dirancang untuk membantu Anda meraih semua impian tanpa batas.</p>
+            <div class="speaker-info">
+                <img src="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg" alt="Foto Deka Sonjaya">
+                <div>
+                    <strong>Deka Sonjaya</strong><br>
+                    Tim Difi Naga Persada
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="audio-player-container">
+        <div class="container">
+            <audio id="presentation-audio" controls>
+                <source src="Peesentasi Bag.1.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+            <div class="timestamps">
+                <a onclick="seekAudio(25)">Impian</a> |
+                <a onclick="seekAudio(237)">Masalah</a> |
+                <a onclick="seekAudio(430)">Solusi</a> |
+                <a onclick="seekAudio(702)">Keunggulan</a> |
+                <a onclick="seekAudio(813)">Cara Mulai</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="dreams">
+            <div class="container">
+                <h2 class="section-title">Apa Impian Terbesar Anda?</h2>
+                <p class="highlight">"Ini semua adalah impian kita, betul? Ini penting nggak Bapak Ibu? Benar sekali, semua ini adalah penting. Tetapi, ada yang lebih penting dari ini: Bagaimana caranya kita bisa mewujudkan itu semua?"</p>
+                <div class="grid">
+                    <div class="card">
+                        <div class="icon">💰</div>
+                        <h3>Finansial Berlimpah</h3>
+                        <p>Memiliki kebebasan finansial untuk memenuhi segala kebutuhan dan keinginan.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🏡</div>
+                        <h3>Rumah Idaman</h3>
+                        <p>Memberikan tempat tinggal terbaik dan ternyaman untuk keluarga tercinta.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🚗</div>
+                        <h3>Kendaraan Impian</h3>
+                        <p>Menikmati kenyamanan dan kebanggaan memiliki kendaraan yang selalu Anda dambakan.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🕋</div>
+                        <h3>Ibadah & Wisata Religi</h3>
+                        <p>Menunaikan panggilan suci dan memperkaya batin tanpa kendala biaya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problems">
+            <div class="container">
+                <h2 class="section-title">Kendala Usaha Konvensional</h2>
+                 <p class="highlight">"Kondisi ekonomi di negara kita sedang tidak stabil, ditambah kemajuan teknologi... Akibatnya penggunaan tenaga manusia mulai tergantikan."</p>
+                <div class="grid">
+                    <div class="card">
+                        <div class="icon">💼</div>
+                        <h3>Modal Besar</h3>
+                        <p>Membutuhkan investasi awal yang signifikan dan seringkali berisiko tinggi.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🔧</div>
+                        <h3>Keahlian Khusus</h3>
+                        <p>Menuntut keterampilan dan pengetahuan mendalam di bidang tertentu.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🏁</div>
+                        <h3>Persaingan Ketat</h3>
+                        <p>Harus siap menghadapi kompetisi pasar yang bisa sangat melelahkan.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">📜</div>
+                        <h3>Butuh Pengalaman</h3>
+                        <p>Pengalaman seringkali menjadi kunci yang tidak dimiliki oleh semua orang.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title">Solusi Telah Hadir: Ekosistem Difi Team & Opalpi</h2>
+                <p class="highlight">"Saya ingin memperkenalkan sebuah konsep usaha modern yang memberikan peluang kepada kita agar kita mendapatkan kesempatan untuk menikmati kebebasan finansial."</p>
+                <img src="https://via.placeholder.com/600x300.png?text=Diagram+Ekosistem+Difi+Team+dan+Opalpi" alt="Diagram Ekosistem" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
+                <h3>Kerja Sama Sinergis untuk Keuntungan Bersama</h3>
+                <p>Difi Team sebagai komunitas edukasi, Anda sebagai pengguna, dan Opalpi sebagai platform transaksi berteknologi tinggi, bekerja sama dalam sebuah ekosistem tertutup yang berkelanjutan dimana semua pihak diuntungkan.</p>
+                <div class="grid">
+                     <div class="card">
+                        <h3>MODAL CUKUP 1x</h3>
+                        <p>Hanya satu kali seumur hidup, tanpa biaya tersembunyi.</p>
+                    </div>
+                     <div class="card">
+                        <h3>TANPA KEAHLIAN</h3>
+                        <p>Tidak perlu latar belakang atau skill khusus, semua akan dibimbing.</p>
+                    </div>
+                     <div class="card">
+                        <h3>TANPA PENGALAMAN</h3>
+                        <p>Yang dibutuhkan hanya pikiran positif, kerja keras, dan konsistensi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantages">
+            <div class="container">
+                 <h2 class="section-title">Keunggulan Konsep Bisnis Modern Ini</h2>
+                 <p class="highlight">"Dengan penghasilan yang konsisten, mudah, aman dan teruji ini, maka penghasilan Anda akan terus bertambah dari waktu ke waktu."</p>
+                 <div class="grid">
+                    <div class="card">
+                        <div class="icon">⏱️</div>
+                        <h3>MUDAH & FLEKSIBEL</h3>
+                        <p>Hanya butuh beberapa menit setiap hari (12:10 & 20:10). Tidak mengganggu aktivitas utama Anda.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🛡️</div>
+                        <h3>AMAN & TERPERCAYA</h3>
+                        <p>Platform resmi dengan izin internasional. Anda bisa menarik dana dan keuntungan kapan saja.</p>
+                    </div>
+                     <div class="card">
+                        <div class="icon">📈</div>
+                        <h3>TERUJI & MENGUNTUNGKAN</h3>
+                        <p>Terbukti memberikan keuntungan konsisten 1.8% setiap hari. Modal kembali dalam ~40 hari dengan bunga majemuk.</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+        
+        <section id="start">
+             <div class="container" style="text-align: center;">
+                 <h2 class="section-title">Siap Memulai Perjalanan Anda?</h2>
+                 <p>Inilah arti kebebasan finansial yang sesungguhnya. Anda memiliki waktu dan uang secara bebas.</p>
+                 <p>Bergabunglah dengan komunitas kami dan mulailah membangun masa depan yang Anda impikan sekarang juga.</p>
+                 <a href="#link-pendaftaran-anda" class="cta-button">YA, SAYA MAU BERGABUNG SEKARANG!</a>
+                 <p style="margin-top: 20px; font-size: 0.9rem;">"Bukan masalah bisa atau tidak bisa, tetapi Anda mau atau tidak."</p>
+             </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--primary-color); color: var(--white); text-align: center; padding: 20px 0;">
+        <div class="container">
+            <p>&copy; 2025 Difi Naga Persada. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        function seekAudio(timeInSeconds) {
+            const audio = document.getElementById('presentation-audio');
+            audio.currentTime = timeInSeconds;
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>
