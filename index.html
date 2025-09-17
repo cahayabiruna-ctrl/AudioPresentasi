@@ -3,501 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Temukan konsep usaha modern bersama DVTEAM & Opalpi untuk meraih kebebasan finansial dengan modal sekali seumur hidup, tanpa keahlian khusus.">
-    
-    <title>Peluang Usaha Modern - DVTEAM & Opalpi</title>
+    <meta name="description" content="Presentasi visual tentang konsep usaha modern bersama DVTEAM & Opalpi, disinkronkan dengan narasi audio.">
+    <title>Presentasi Visual - DVTEAM & Opalpi</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ======================================== */
-        /* DESAIN ULANG TOTAL              */
-        /* ======================================== */
-
         :root {
-            --primary-color: #1a237e; /* Indigo gelap */
-            --secondary-color: #283593; /* Indigo sedang */
-            --accent-color: #ffab00; /* Amber cerah */
-            --text-color: #212121; /* Abu-abu sangat gelap */
-            --text-light: #5f6368; /* Abu-abu sedang */
-            --light-bg: #f5f7fa;
-            --white: #ffffff;
-            --border-color: #e0e0e0;
-            --shadow: 0 8px 24px rgba(26, 35, 126, 0.08);
-            --shadow-hover: 0 12px 32px rgba(26, 35, 126, 0.12);
+            --primary-color: #1a237e;
+            --accent-color: #ffab00;
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --text-muted: #a0a0b8;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 0;
-            line-height: 1.7;
+            background-color: var(--bg-color);
             color: var(--text-color);
-            background-color: var(--light-bg);
-            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
         }
 
         h1, h2, h3 {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
         }
-
-        /* Container */
-        .container {
-            max-width: 1024px;
-            margin: auto;
-            padding: 0 24px;
-        }
-
-        /* Header / Hero Section */
-        header {
-            background: linear-gradient(45deg, rgba(26, 35, 126, 0.9), rgba(40, 53, 147, 0.8)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600') no-repeat center center/cover;
-            color: var(--white);
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            margin: 0 auto 32px auto;
-            opacity: 0.9;
-            font-weight: 400;
-        }
         
-        .speaker-info {
-            display: inline-flex;
+        .presentation-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 16px;
-            background: rgba(255,255,255,0.1);
-            padding: 12px 24px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .speaker-info img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            padding: 24px;
         }
 
-        /* Audio Player Styling */
-        .audio-player-container {
-            position: sticky;
+        .slideshow-container {
+            width: 100%;
+            max-width: 960px;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            background-color: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide {
+            position: absolute;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 48px;
+            box-sizing: border-box;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .slide h2 {
+            font-size: 2.8rem;
+            margin: 0 0 12px 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            max-width: 80%;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            color: var(--text-muted);
+        }
+        
+        .audio-player-container {
+            width: 100%;
+            background: #1a1a1a;
+            padding: 16px 24px;
+            box-sizing: border-box;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: saturate(180%) blur(10px);
-            padding: 16px;
-            box-shadow: var(--shadow);
         }
 
         audio {
             width: 100%;
+            max-width: 960px;
+            display: block;
+            margin: auto;
         }
-
-        /* Sections Styling */
-        section {
-            padding: 80px 0;
-            transition: background-color 0.5s ease-in-out;
-        }
-        
-        section.active-section {
-            background-color: #e8eaf6; /* Warna indigo sangat muda */
-        }
-
-        section:nth-child(even):not(.active-section) {
-            background-color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 24px;
-            color: var(--primary-color);
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            max-width: 650px;
-            margin: 0 auto 60px auto;
-            color: var(--text-light);
-        }
-        
-        .highlight {
-            text-align: center;
-            margin: 0 auto 60px auto;
-            max-width: 700px;
-            font-size: 1.5rem;
-            font-family: 'Poppins', serif;
-            font-weight: 600;
-            color: var(--secondary-color);
-            position: relative;
-            padding: 0 40px;
-        }
-        
-        .highlight::before, .highlight::after {
-            content: '“';
-            font-size: 5rem;
-            color: var(--accent-color);
-            opacity: 0.3;
-            position: absolute;
-        }
-        
-        .highlight::before {
-            top: -20px;
-            left: 0;
-        }
-        
-        .highlight::after {
-            content: '”';
-            bottom: -50px;
-            right: 0;
-        }
-
-        /* Grid for Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card .icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, var(--accent-color), #ffc107);
-            border-radius: 50%;
-            margin-bottom: 24px;
-            color: var(--primary-color);
-        }
-
-        .card .icon svg {
-            width: 36px;
-            height: 36px;
-            stroke-width: 2;
-        }
-        
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            font-size: 1.4rem;
-        }
-
-        .card p {
-            color: var(--text-light);
-        }
-
-        /* Call to Action (CTA) Section */
-        #start {
-             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-             color: var(--white);
-             text-align: center;
-        }
-
-        #start .section-title, #start p {
-            color: var(--white);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-color);
-            color: var(--text-color);
-            padding: 16px 40px;
-            font-size: 1.1rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 24px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 171, 0, 0.4);
-        }
-
-        .cta-button:hover {
-            background-color: #ffc107;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 171, 0, 0.5);
-        }
-        
-        /* Timestamps */
-        .timestamps {
-            text-align: center;
-            margin-top: 16px;
-        }
-        
-        .timestamps a {
-            margin: 0 12px;
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: 500;
-            font-family: 'Poppins', sans-serif;
-            transition: color 0.3s ease;
-        }
-        
-        .timestamps a:hover {
-            color: var(--accent-color);
-        }
-        
-        /* Footer */
-        footer {
-            background: #1a1a2e;
-            color: #a0a0b8;
-            text-align: center;
-            padding: 32px 0;
-            font-size: 0.9rem;
-        }
-
     </style>
 </head>
 <body>
 
-    <header id="home">
-        <div class="container">
-            <h1>Wujudkan Kebebasan Finansial Anda Hari Ini</h1>
-            <p>Sebuah konsep usaha modern yang dirancang untuk membantu Anda meraih impian tanpa batas.</p>
-            <div class="speaker-info">
-                <img src="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg" alt="Foto Profil Deka Sonjaya">
-                <div>
-                    <strong>Deka Sonjaya</strong><br>
-                    <small>Tim DV Naga Persada</small>
+    <div class="presentation-wrapper">
+        <div class="slideshow-container">
+
+            <div id="slide-1" class="slide active" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
+                <div class="slide-content">
+                    <h2>Wujudkan Kebebasan Finansial Anda</h2>
+                    <p>Sebuah konsep usaha modern oleh DVTEAM & Opalpi.</p>
                 </div>
             </div>
-        </div>
-    </header>
-    
-    <div class="audio-player-container">
-        <div class="container">
-            <audio id="presentation-audio" controls>
-                <source src="Presentasi-Bag1.mp3" type="audio/mpeg">
-                Browser Anda tidak mendukung elemen audio.
-            </audio>
-            <div class="timestamps">
-                <a onclick="seekAudio(18)">Impian</a> |
-                <a onclick="seekAudio(62)">Tantangan</a> |
-                <a onclick="seekAudio(77)">Solusi</a> |
-                <a onclick="seekAudio(154)">Keunggulan</a> |
-                <a onclick="seekAudio(183)">Mulai</a>
+
+            <div id="slide-2" class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
+                <div class="slide-content">
+                    <h2>Apa Impian Terbesar Anda?</h2>
+                    <p>Rumah idaman, finansial berlimpah, kendaraan impian, atau menunaikan ibadah?</p>
+                </div>
             </div>
+            
+            <div id="slide-3" class="slide" style="background-image: url('https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
+                <div class="slide-content">
+                    <h2>Tantangan Usaha Konvensional</h2>
+                    <p>Modal besar, butuh keahlian, persaingan ketat, dan harus berpengalaman.</p>
+                </div>
+            </div>
+            
+            <div id="slide-4" class="slide" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e2775d2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
+                <div class="slide-content">
+                    <h2>Solusi Telah Hadir</h2>
+                    <p>Memperkenalkan ekosistem sinergis: DVTEAM & Opalpi.</p>
+                </div>
+            </div>
+            
+            <div id="slide-5" class="slide" style="background-image: url('https://images.unsplash.com/photo-1593435715538-7a602135d033?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
+                <div class="slide-content">
+                    <h2>Ekosistem yang Saling Menguntungkan</h2>
+                    <p>DVTEAM sebagai pemandu, Anda sebagai pengguna, dan Opalpi sebagai platform teknologi.</p>
+                </div>
+            </div>
+            
+            <div id="slide-6" class="slide" style="background-image: url('https://images.unsplash.com/photo-1587614203976-365c7d6297e2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
+                <div class="slide-content">
+                    <h2>Keunggulan Konsep Modern</h2>
+                    <p>Mudah, Fleksibel, Aman, Terpercaya, dan Teruji Menguntungkan.</p>
+                </div>
+            </div>
+            
+            <div id="slide-7" class="slide" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
+                <div class="slide-content">
+                    <h2>Siap Memulai Perjalanan Anda?</h2>
+                    <p>Inilah arti kebebasan finansial yang sesungguhnya. Anda memiliki waktu dan uang secara bebas.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <main>
-        <section id="dreams" data-start="18" data-end="61">
-            <div class="container">
-                <h2 class="section-title">Apa Impian Terbesar Anda?</h2>
-                <p class="section-subtitle">Semua berawal dari sebuah impian. Apakah ini adalah hal-hal yang ingin Anda wujudkan dalam hidup?</p>
-                <div class="grid">
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
-                        <h3>Finansial Berlimpah</h3>
-                        <p>Memiliki kebebasan finansial untuk memenuhi segala kebutuhan dan keinginan.</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
-                        <h3>Rumah Idaman</h3>
-                        <p>Memberikan tempat tinggal terbaik dan ternyaman untuk keluarga tercinta.</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div>
-                        <h3>Kendaraan Impian</h3>
-                        <p>Menikmati kenyamanan dan kebanggaan memiliki kendaraan yang selalu Anda dambakan.</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg></div>
-                        <h3>Ibadah & Wisata Religi</h3>
-                        <p>Menunaikan panggilan suci dan memperkaya batin tanpa kendala biaya.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="problems" data-start="62" data-end="76">
-            <div class="container">
-                <h2 class="section-title">Tantangan Usaha Konvensional</h2>
-                <p class="section-subtitle">Untuk mewujudkan impian, kita perlu usaha. Namun, memulai usaha konvensional seringkali dihadapkan pada tembok besar.</p>
-                <p class="highlight">"Kondisi ekonomi di negara kita sedang tidak stabil, ditambah kemajuan teknologi... Akibatnya penggunaan tenaga manusia mulai tergantikan."</p>
-                <div class="grid">
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
-                        <h3>Modal Besar</h3>
-                        <p>Membutuhkan investasi awal yang signifikan dan seringkali berisiko tinggi.</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-                        <h3>Keahlian Khusus</h3>
-                        <p>Menuntut keterampilan dan pengetahuan mendalam di bidang tertentu.</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-                        <h3>Persaingan Ketat</h3>
-                        <p>Harus siap menghadapi kompetisi pasar yang bisa sangat melelahkan.</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
-                        <h3>Butuh Pengalaman</h3>
-                        <p>Pengalaman seringkali menjadi kunci yang tidak dimiliki oleh semua orang.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="solution" data-start="77" data-end="153">
-            <div class="container" style="text-align: center;">
-                <h2 class="section-title">Solusi Telah Hadir: Ekosistem DVTEAM & Opalpi</h2>
-                <p class="section-subtitle">Bagaimana jika ada cara untuk melewati semua rintangan tersebut? Sebuah konsep usaha modern telah dirancang untuk Anda.</p>
-                <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1800" alt="Diagram Kerjasama Ekosistem Bisnis Modern" style="max-width: 100%; border-radius: 16px; margin-bottom: 40px; box-shadow: var(--shadow);">
-                <h3>Kerja Sama Sinergis untuk Keuntungan Bersama</h3>
-                <p class="section-subtitle">DVTEAM sebagai komunitas edukasi, Anda sebagai pengguna, dan Opalpi sebagai platform transaksi berteknologi tinggi, bekerja sama dalam sebuah ekosistem tertutup yang berkelanjutan dimana semua pihak diuntungkan.</p>
-                <div class="grid">
-                     <div class="card">
-                        <h3>MODAL CUKUP 1x</h3>
-                        <p>Hanya satu kali seumur hidup, tanpa biaya tersembunyi.</p>
-                    </div>
-                     <div class="card">
-                        <h3>TANPA KEAHLIAN</h3>
-                        <p>Tidak perlu latar belakang atau skill khusus, semua akan dibimbing.</p>
-                    </div>
-                     <div class="card">
-                        <h3>TANPA PENGALAMAN</h3>
-                        <p>Yang dibutuhkan hanya pikiran positif, kerja keras, dan konsistensi.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="advantages" data-start="154" data-end="182">
-            <div class="container">
-                 <h2 class="section-title">Keunggulan Konsep Bisnis Modern Ini</h2>
-                 <p class="section-subtitle">Inilah yang membedakan konsep ini dari yang lain, dirancang untuk kesuksesan Anda.</p>
-                 <p class="highlight">"Dengan penghasilan yang konsisten, mudah, aman dan teruji ini, maka penghasilan Anda akan terus bertambah dari waktu ke waktu."</p>
-                 <div class="grid">
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-                        <h3>MUDAH & FLEKSIBEL</h3>
-                        <p>Hanya butuh beberapa menit setiap hari (12:10 & 20:10). Tidak mengganggu aktivitas utama Anda.</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-                        <h3>AMAN & TERPERCAYA</h3>
-                        <p>Platform resmi dengan izin internasional. Anda bisa menarik dana dan keuntungan kapan saja.</p>
-                    </div>
-                     <div class="card">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20V16"></path></svg></div>
-                        <h3>TERUJI & MENGUNTUNGKAN</h3>
-                        <p>Terbukti memberikan keuntungan konsisten 1.8% setiap hari. Modal kembali dalam ~40 hari dengan bunga majemuk.</p>
-                    </div>
-                 </div>
-            </div>
-        </section>
-        
-        <section id="start" data-start="183" data-end="246">
-             <div class="container">
-                 <h2 class="section-title">Siap Memulai Perjalanan Anda?</h2>
-                 <p>Inilah arti kebebasan finansial yang sesungguhnya. Anda memiliki waktu dan uang secara bebas.<br>Bergabunglah dengan komunitas kami dan mulailah membangun masa depan yang Anda impikan sekarang juga.</p>
-                 <a href="#" class="cta-button">YA, SAYA MAU BERGABUNG SEKARANG!</a>
-                 <p style="margin-top: 32px; font-size: 1rem; font-style: italic; opacity: 0.8;">"Bukan masalah bisa atau tidak bisa, tetapi Anda mau atau tidak."</p>
-             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 DV Naga Persada. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div class="audio-player-container">
+        <audio id="presentation-audio" controls>
+            <source src="Presentasi-Bag1.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+        </audio>
+    </div>
     
     <script>
-        // Fungsi untuk navigasi manual
-        function seekAudio(timeInSeconds) {
-            const audio = document.getElementById('presentation-audio');
-            audio.currentTime = timeInSeconds;
-            audio.play();
-        }
-
-        // Logika untuk sinkronisasi otomatis
         document.addEventListener('DOMContentLoaded', () => {
             const audio = document.getElementById('presentation-audio');
-            const sections = document.querySelectorAll('section[data-start]');
-            let currentActiveSection = null;
+            
+            // PETA WAKTU Diperbarui dengan Slide 5
+            const slideCues = [
+                { time: 0,   slideId: 'slide-1' },
+                { time: 18,  slideId: 'slide-2' },
+                { time: 62,  slideId: 'slide-3' },
+                { time: 77,  slideId: 'slide-4' },
+                { time: 121, slideId: 'slide-5' }, // Timestamp untuk slide ekosistem
+                { time: 154, slideId: 'slide-6' },
+                { time: 183, slideId: 'slide-7' },
+            ];
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        currentActiveSection = entry.target;
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            sections.forEach(section => observer.observe(section));
+            let currentSlideId = 'slide-1';
 
             audio.addEventListener('timeupdate', () => {
                 const currentTime = audio.currentTime;
-                let activeSection = null;
+                let activeCue = slideCues[0];
 
-                sections.forEach(section => {
-                    const start = parseFloat(section.dataset.start);
-                    const end = parseFloat(section.dataset.end);
-
-                    if (currentTime >= start && currentTime < end) {
-                        activeSection = section;
+                for (let i = 0; i < slideCues.length; i++) {
+                    if (currentTime >= slideCues[i].time) {
+                        activeCue = slideCues[i];
+                    } else {
+                        break;
                     }
-                });
+                }
+                
+                if (activeCue.slideId !== currentSlideId) {
+                    const oldSlide = document.getElementById(currentSlideId);
+                    if (oldSlide) oldSlide.classList.remove('active');
 
-                if (activeSection && activeSection !== currentActiveSection) {
-                    if (currentActiveSection) {
-                        currentActiveSection.classList.remove('active-section');
-                    }
+                    const newSlide = document.getElementById(activeCue.slideId);
+                    if (newSlide) newSlide.classList.add('active');
 
-                    activeSection.classList.add('active-section');
-                    // Hanya scroll jika section tidak terlihat
-                    const rect = activeSection.getBoundingClientRect();
-                    if (rect.top < 0 || rect.bottom > window.innerHeight) {
-                        activeSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                    }
-                    currentActiveSection = activeSection;
+                    currentSlideId = activeCue.slideId;
                 }
             });
-            
-            const removeHighlight = () => {
-                 const highlighted = document.querySelector('.active-section');
-                 if(highlighted) {
-                    highlighted.classList.remove('active-section');
-                    currentActiveSection = null;
-                 }
-            };
-            
-            audio.addEventListener('ended', removeHighlight);
-            audio.addEventListener('pause', removeHighlight);
+
+            audio.addEventListener('seeking', () => {
+                if (audio.currentTime < slideCues[1].time) {
+                    const oldSlide = document.getElementById(currentSlideId);
+                    if (oldSlide) oldSlide.classList.remove('active');
+                    
+                    const firstSlide = document.getElementById(slideCues[0].slideId);
+                    if (firstSlide) firstSlide.classList.add('active');
+                    
+                    currentSlideId = slideCues[0].slideId;
+                }
+            });
         });
     </script>
 
