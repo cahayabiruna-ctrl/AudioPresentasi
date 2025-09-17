@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Peluang Bisnis Modern | DV Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Dark Blue */
+            --secondary-color: #3498db; /* Bright Blue */
+            --background-color: #ecf0f1; /* Light Gray */
+            --text-color: #34495e; /* Dark Gray */
+            --card-bg-color: #ffffff;
+            --highlight-bg: #d4e6f1; /* Light Blue for highlight */
+            --highlight-text: #1a5276; /* Darker blue for highlighted text */
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .header-card {
+            background-color: var(--primary-color);
+            color: var(--card-bg-color);
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-card h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .header-card p {
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .speaker-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .speaker-info .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .speaker-info .details {
+            line-height: 1.4;
+        }
+        
+        .speaker-info .details p {
+            margin: 0;
+        }
+        
+        .speaker-info .name {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .transcript p, .transcript li {
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        
+        .transcript li {
+             list-style-type: '✓ ';
+             padding-left: 5px;
+             margin-left: 20px;
+        }
+
+        .transcript .active {
+            background-color: var(--highlight-bg);
+            color: var(--highlight-text);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header-card">
+            <h1>Peluang Bisnis di Era Digital</h1>
+            <p>Sebuah presentasi tentang bagaimana mencapai kebebasan finansial dengan konsep bisnis modern.</p>
+        </header>
+
+        <main>
+            <section class="card audio-player">
+                <div class="speaker-info">
+                    <div class="avatar">D</div>
+                    <div class="details">
+                        <p class="name">Deka Sonjaya</p>
+                        <p>Tim di Vinaga Persada</p>
+                    </div>
+                </div>
+                <audio id="audio-presentation" controls>
+                    <source src="Presentasi-Bag1.mp3" type="audio/mpeg">
+                    Browser Anda tidak mendukung elemen audio.
+                </audio>
+            </section>
+
+            <section class="card transcript">
+                <h2>Transkrip Presentasi</h2>
+
+                <div id="pembukaan">
+                    <h3>Refleksi Impian Kita</h3>
+                    <p data-start="0" data-end="6.5">Assalamualaikum warahmatullahi wabarakatuh. Salam edukasi dan tetap semangat. Selamat pagi.</p>
+                    <p data-start="7" data-end="18">Saya Deka Sonjaya, tim di Vinaga Persada, senang rasanya bisa berada di kesempatan pagi hari ini yang sangat luar biasa buat kita semua. Bapak Ibu yang saya hormati, apa yang terpenting dalam hidup Anda?</p>
+                    <ul>
+                        <li data-start="18.1" data-end="20.5">Mau punya uang banyak?</li>
+                        <li data-start="20.6" data-end="22.5">Mau punya rumah idaman?</li>
+                        <li data-start="22.6" data-end="24.5">Mau punya mobil impian?</li>
+                        <li data-start="24.6" data-end="29.8">Mau punya dana simpanan buat pendidikan anak atau dana pensiun hari tua?</li>
+                        <li data-start="29.9" data-end="35">Mau menunaikan ibadah haji atau wisata religi?</li>
+                    </ul>
+                    <p data-start="35.1" data-end="38">Ini semua adalah impian kita, betul? Ini penting nggak, Bapak Ibu?</p>
+                </div>
+                
+                <div id="tantangan">
+                    <h3>Tantangan Memulai Usaha Konvensional</h3>
+                    <p data-start="38.5" data-end="47.5">Benar sekali, semua ini penting. Tetapi, ada yang lebih penting: Bagaimana caranya kita bisa mewujudkan itu semua? Jawabannya sudah pasti, yaitu kita harus mau usaha.</p>
+                    <p data-start="47.6" data-end="51">Kira-kira, apa yang harus disiapkan untuk memulai usaha?</p>
+                    <ul>
+                        <li data-start="51.1" data-end="53.5">Dibutuhkan modal yang besar.</li>
+                        <li data-start="53.6" data-end="56">Dibutuhkan keahlian dan keterampilan.</li>
+                        <li data-start="56.1" data-end="59">Harus siap menghadapi persaingan yang sangat ketat.</li>
+                        <li data-start="59.1" data-end="61.5">Dan yang terakhir, harus berpengalaman.</li>
+                    </ul>
+                    <p data-start="61.8" data-end="75">Bapak dan Ibu, kita merasakan kondisi ekonomi tidak stabil, ditambah kemajuan teknologi yang menggantikan tenaga manusia, sehingga terjadi PHK besar-besaran dan daya beli masyarakat menurun.</p>
+                </div>
+
+                <div id="solusi">
+                    <h3>Solusi: Konsep Usaha Modern</h3>
+                    <p data-start="75.1" data-end="88.5">Lalu, adakah cara yang lebih baik? Jawabannya, ada. Saya ingin memperkenalkan sebuah konsep usaha modern yang memberikan peluang untuk menikmati kebebasan finansial.</p>
+                     <ul>
+                        <li data-start="88.8" data-end="91.5">Tidak membutuhkan modal yang banyak.</li>
+                        <li data-start="91.6" data-end="93.8">Modalnya cukup sekali seumur hidup.</li>
+                        <li data-start="93.9" data-end="96.5">Tidak membutuhkan keahlian dan keterampilan.</li>
+                        <li data-start="96.6" data-end="98.5">Tidak dibutuhkan pengalaman.</li>
+                    </ul>
+                    <p data-start="98.6" data-end="107">Yang dibutuhkan hanya: pikiran positif, mau kerja keras, dan konsistensi. Jadi bukan masalah bisa atau tidak bisa, tetapi Anda mau atau tidak.</p>
+                </div>
+                
+                <div id="platform">
+                    <h3>Memperkenalkan DV Team & Opalpie</h3>
+                     <p data-start="107.5" data-end="121.5">Saya akan memperkenalkan Global Education Community yang dikenal dengan DV Team. DV Team adalah komunitas belajar bersama untuk memanfaatkan platform perusahaan berteknologi tinggi bernama Opalpie agar kita mendapatkan keuntungan.</p>
+                     <p data-start="121.6" data-end="137.5">Opalpie dan DV Team bekerja sama membangun ekosistem tertutup agar semua pihak diuntungkan: Anda sebagai pengguna, DV Team sebagai pemandu, dan Opalpie sebagai aplikasi transaksinya.</p>
+                     <p data-start="137.6" data-end="151.5">Semakin banyak anggota, semakin besar transaksi di Opalpie, semakin besar fee dan dividen yang dihasilkan. Sebagian hasil akan diinvestasikan kembali untuk meningkatkan akurasi sistem, sehingga keuntungan Anda semakin stabil.</p>
+                </div>
+                
+                <div id="keunggulan">
+                    <h3>Keunggulan Konsep Ini</h3>
+                     <ul>
+                        <li data-start="154.1" data-end="165.2"><strong>Mudah Dikerjakan:</strong> Hanya butuh 1 menit di jam 12:10 siang dan 1 menit di jam 20:10 malam, sehingga tidak mengganggu waktu utama Anda.</li>
+                        <li data-start="165.3" data-end="174.2"><strong>Aman:</strong> Bergabung dengan platform resmi berizin internasional. Anda bisa menarik dana dan keuntungan kapan saja.</li>
+                        <li data-start="174.3" data-end="183.5"><strong>Teruji:</strong> Terbukti menerima keuntungan setiap hari dari hasil transaksi Anda, membuat penghasilan terus bertambah dari waktu ke waktu.</li>
+                    </ul>
+                </div>
+                 <div id="memulai">
+                    <h3>Cara Memulai & Keuntungan Anda</h3>
+                    <p data-start="183.6" data-end="191.5">Caranya mudah: Daftar di Opalpie dengan kode referral anggota DV, lalu bergabunglah dengan komunitas DV untuk mendapat edukasi.</p>
+                    <p data-start="191.6" data-end="203.5">Keuntungan yang Anda dapatkan adalah sebesar 1,8% setiap hari. Dengan perhitungan bunga majemuk, dalam waktu 40 hari modal Anda akan kembali.</p>
+                    <p data-start="203.6" data-end="213.5">Konsep kerjanya 3 langkah: Belajar, Praktik mengeksekusi sinyal, dan Profit yang terus ditingkatkan.</p>
+                </div>
+                
+                <div id="penutup">
+                    <h3>Arti Kebebasan Finansial Sebenarnya</h3>
+                    <p data-start="213.8" data-end="223">Ketika Anda resmi menjadi anggota, Anda akan menerima penghasilan secara konsisten. Bayangkan, dengan potensi ini, apa yang bisa Anda lakukan?</p>
+                    <ul>
+                        <li data-start="223.1" data-end="228">Anda bisa mengembangkan minat dan bakat tanpa dikejar kewajiban mencari nafkah.</li>
+                        <li data-start="228.1" data-end="234">Anda akan memiliki waktu utama untuk keluarga, bukan waktu sisa saat lelah pulang kerja.</li>
+                        <li data-start="234.1" data-end="238.5">Anda tidak akan takut lagi membantu orang karena khawatir uang berkurang.</li>
+                    </ul>
+                    <p data-start="238.8" data-end="245">Inilah arti kebebasan finansial yang sesungguhnya. Anda memiliki waktu dan uang secara bebas.</p>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Presentasi DV Team. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audio-presentation');
+            const transcriptElements = document.querySelectorAll('.transcript [data-start]');
+            let currentlyActiveElement = null;
+
+            audio.addEventListener('timeupdate', function() {
+                let activeElement = null;
+                const currentTime = audio.currentTime;
+
+                transcriptElements.forEach(el => {
+                    const start = parseFloat(el.dataset.start);
+                    const end = parseFloat(el.dataset.end);
+                    if (currentTime >= start && currentTime <= end) {
+                        activeElement = el;
+                    }
+                });
+
+                if (activeElement && activeElement !== currentlyActiveElement) {
+                    if (currentlyActiveElement) {
+                        currentlyActiveElement.classList.remove('active');
+                    }
+                    
+                    activeElement.classList.add('active');
+                    currentlyActiveElement = activeElement;
+                    
+                    // Auto-scroll logic
+                    const elementRect = activeElement.getBoundingClientRect();
+                    const containerRect = activeElement.parentElement.getBoundingClientRect();
+                    
+                    // Check if element is not fully visible
+                    if (elementRect.top < containerRect.top || elementRect.bottom > window.innerHeight) {
+                       activeElement.scrollIntoView({
+                           behavior: 'smooth',
+                           block: 'center',
+                           inline: 'nearest'
+                       });
+                    }
+                }
+            });
+
+            audio.addEventListener('pause', function() {
+                if(currentlyActiveElement) {
+                    // Optional: remove highlight on pause, or keep it. Keeping it is often better.
+                    // currentlyActiveElement.classList.remove('active');
+                    // currentlyActiveElement = null;
+                }
+            });
+
+             audio.addEventListener('ended', function() {
+                if(currentlyActiveElement) {
+                     currentlyActiveElement.classList.remove('active');
+                     currentlyActiveElement = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
