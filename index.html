@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Presentasi Audio Profesional - DVTEAM</title>
   <style>
-    /* ======================================== */
-    /* DESAIN ULANG & FITUR BARU        */
-    /* ======================================== */
-
     :root {
-        --bg-dark: #0f172a; /* Latar belakang biru malam */
-        --primary-blue: #38bdf8; /* Biru langit cerah */
-        --accent-gold: #f59e0b; /* Emas/Amber */
-        --text-light: #e2e8f0; /* Teks putih keabuan */
-        --card-bg: #1e293b; /* Latar belakang kartu */
+        --bg-dark: #0f172a;
+        --primary-blue: #38bdf8;
+        --accent-gold: #f59e0b;
+        --text-light: #e2e8f0;
+        --card-bg: #1e293b;
         --shadow-color: rgba(56, 189, 248, 0.1);
     }
 
@@ -27,11 +23,10 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        overflow: hidden; /* Mencegah scroll */
+        overflow: hidden;
         position: relative;
     }
 
-    /* Kontainer utama presentasi */
     .presentation-container {
         width: 100%;
         max-width: 650px;
@@ -44,7 +39,7 @@
         text-align: center;
         position: relative;
         z-index: 10;
-        cursor: pointer; /* Menunjukkan bisa diklik untuk fullscreen */
+        cursor: pointer;
     }
 
     h1 {
@@ -59,7 +54,6 @@
         margin-bottom: 24px;
     }
 
-    /* Visualizer audio yang lebih elegan */
     .audio-visual {
         display: flex;
         justify-content: center;
@@ -91,7 +85,6 @@
         margin: 24px 0;
     }
 
-    /* Desain ulang tombol timestamp */
     .timestamps {
         margin-top: 15px;
         display: flex;
@@ -103,7 +96,7 @@
     .timestamps button {
         padding: 12px 20px;
         border: 1px solid var(--accent-gold);
-        border-radius: 50px; /* Bentuk pil */
+        border-radius: 50px;
         background: transparent;
         color: var(--accent-gold);
         cursor: pointer;
@@ -117,7 +110,6 @@
         box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
     }
 
-    /* === Animasi Gelembung === */
     .bubbles {
         position: absolute;
         width: 100%;
@@ -125,13 +117,13 @@
         top: 0;
         left: 0;
         z-index: 1;
-        pointer-events: none; /* Agar tidak menghalangi klik */
+        pointer-events: none;
     }
     
     .bubble {
         position: absolute;
-        bottom: -150px; /* Mulai dari bawah layar */
-        background: rgba(56, 189, 248, 0.1); /* Warna gelembung */
+        bottom: -150px;
+        background: rgba(56, 189, 248, 0.1);
         border-radius: 50%;
         animation: rise 25s infinite;
         list-style: none;
@@ -162,7 +154,7 @@
     </div>
     <h3>Oleh: Deka Sonjaya (DVTEAM)</h3>
     <audio id="presentation" controls>
-      <source src="presentasi-bag1.mp3" type="audio/mpeg">
+      <source src="https://cahayabiruna-ctrl.github.io/AudioPresentasi/Presentasi-Bag1.mp3" type="audio/mpeg">
       Browser Anda tidak mendukung audio.
     </audio>
     <div class="timestamps">
@@ -175,46 +167,47 @@
   </div>
 
 <script>
-  // Fungsi untuk melompat ke bagian audio
   function seek(seconds) {
+    // Menghentikan propagasi agar tidak memicu fullscreen saat tombol diklik
+    event.stopPropagation(); 
     const audioPlayer = document.getElementById('presentation');
     audioPlayer.currentTime = seconds;
     audioPlayer.play();
   }
 
-  // === Fungsi untuk Fullscreen ===
   const fullscreenWrapper = document.getElementById('fullscreen-wrapper');
-  fullscreenWrapper.addEventListener('click', () => {
-    if (document.fullscreenElement) {
-        // Jika sudah fullscreen, tidak melakukan apa-apa atau bisa dibuat keluar
-        // document.exitFullscreen();
-    } else {
-        // Jika belum, masuk ke mode fullscreen
-        fullscreenWrapper.requestFullscreen().catch(err => {
-            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-        });
-    }
-  }, { once: true }); // { once: true } membuat ini hanya bisa dijalankan satu kali
+  let isFullscreenEnabled = false; // Penanda untuk memastikan fullscreen hanya sekali
 
-  // === Fungsi untuk Animasi Gelembung ===
+  fullscreenWrapper.addEventListener('click', () => {
+    if (!isFullscreenEnabled && !document.fullscreenElement) {
+        fullscreenWrapper.requestFullscreen().catch(err => {
+            console.log(`Error: ${err.message}`);
+        });
+        isFullscreenEnabled = true; // Set penanda setelah request
+    }
+  });
+
+  // Mencegah audio player memicu fullscreen
+  document.getElementById('presentation').addEventListener('click', function(event) {
+    event.stopPropagation();
+  });
+
+
   const bubbleContainer = document.getElementById('bubble-container');
-  const bubbleCount = 20; // Jumlah gelembung
+  const bubbleCount = 20;
 
   for (let i = 0; i < bubbleCount; i++) {
     const bubble = document.createElement('li');
     bubble.classList.add('bubble');
-
-    const size = Math.random() * 60 + 20; // Ukuran 20px - 80px
-    const duration = Math.random() * 10 + 15; // Durasi 15s - 25s
-    const delay = Math.random() * 10; // Delay mulai 0s - 10s
-    const position = Math.random() * 98; // Posisi horizontal
-
+    const size = Math.random() * 60 + 20;
+    const duration = Math.random() * 10 + 15;
+    const delay = Math.random() * 10;
+    const position = Math.random() * 98;
     bubble.style.width = `${size}px`;
     bubble.style.height = `${size}px`;
     bubble.style.left = `${position}%`;
     bubble.style.animationDuration = `${duration}s`;
     bubble.style.animationDelay = `${delay}s`;
-
     bubbleContainer.appendChild(bubble);
   }
 </script>
