@@ -1,264 +1,223 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Presentasi visual tentang konsep usaha modern bersama DVTEAM & Opalpi, disinkronkan dengan narasi audio.">
-    <title>Presentasi Visual - DVTEAM & Opalpi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentasi Audio Profesional - DVTEAM</title>
+  <style>
+    /* ======================================== */
+    /* DESAIN ULANG & FITUR BARU        */
+    /* ======================================== */
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    :root {
+        --bg-dark: #0f172a; /* Latar belakang biru malam */
+        --primary-blue: #38bdf8; /* Biru langit cerah */
+        --accent-gold: #f59e0b; /* Emas/Amber */
+        --text-light: #e2e8f0; /* Teks putih keabuan */
+        --card-bg: #1e293b; /* Latar belakang kartu */
+        --shadow-color: rgba(56, 189, 248, 0.1);
+    }
 
-    <style>
-        :root {
-            --primary-color: #1a237e;
-            --accent-color: #ffab00;
-            --bg-color: #000000; /* Latar belakang utama dibuat hitam pekat */
-            --text-color: #ffffff;
-            --text-muted: #cccccc; /* Teks dibuat sedikit lebih terang */
-        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow: hidden; /* Mencegah scroll */
+        position: relative;
+    }
 
-        /* Mencegah scroll dan 'bounce' effect di mobile */
-        html, body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            position: fixed;
-        }
+    /* Kontainer utama presentasi */
+    .presentation-container {
+        width: 100%;
+        max-width: 650px;
+        margin: 20px;
+        background: var(--card-bg);
+        padding: 32px;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px var(--shadow-color);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        cursor: pointer; /* Menunjukkan bisa diklik untuk fullscreen */
+    }
 
-        h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-        }
-        
-        .presentation-wrapper {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
+    h1 {
+        color: var(--text-light);
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
 
-        .slideshow-container {
-            width: 100%;
-            height: 100%; /* Defaultnya mengisi ruang yang tersedia */
-            position: relative;
-            background-color: #000;
-            overflow: hidden;
-        }
+    h3 {
+        color: var(--text-muted);
+        font-weight: normal;
+        margin-bottom: 24px;
+    }
 
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 32px;
-            box-sizing: border-box;
-        }
+    /* Visualizer audio yang lebih elegan */
+    .audio-visual {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 20px;
+        height: 40px;
+        align-items: flex-end;
+    }
 
-        .slide.active {
+    .eq-bar {
+        width: 5px;
+        background: linear-gradient(var(--primary-blue), var(--accent-gold));
+        animation: equalize 1.5s infinite ease-in-out;
+        border-radius: 2px;
+    }
+    
+    .eq-bar:nth-child(even) { animation-delay: -0.5s; }
+    .eq-bar:nth-child(3n) { animation-delay: -0.2s; }
+    .eq-bar:nth-child(4n) { animation-delay: -0.8s; }
+
+    @keyframes equalize {
+        0% { transform: scaleY(0.1); }
+        50% { transform: scaleY(1.0); }
+        100% { transform: scaleY(0.1); }
+    }
+
+    audio {
+        width: 100%;
+        margin: 24px 0;
+    }
+
+    /* Desain ulang tombol timestamp */
+    .timestamps {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .timestamps button {
+        padding: 12px 20px;
+        border: 1px solid var(--accent-gold);
+        border-radius: 50px; /* Bentuk pil */
+        background: transparent;
+        color: var(--accent-gold);
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .timestamps button:hover {
+        background: var(--accent-gold);
+        color: var(--bg-dark);
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+    }
+
+    /* === Animasi Gelembung === */
+    .bubbles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none; /* Agar tidak menghalangi klik */
+    }
+    
+    .bubble {
+        position: absolute;
+        bottom: -150px; /* Mulai dari bawah layar */
+        background: rgba(56, 189, 248, 0.1); /* Warna gelembung */
+        border-radius: 50%;
+        animation: rise 25s infinite;
+        list-style: none;
+    }
+
+    @keyframes rise {
+        0% {
+            transform: translateY(0) scale(1);
             opacity: 1;
         }
-
-        /* DIUBAH: Gradasi dibuat lebih pekat agar teks terbaca */
-        .slide::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%);
+        100% {
+            transform: translateY(-1080px) scale(0);
+            opacity: 0;
         }
-
-        .slide-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .slide h2 {
-            font-size: 2.5rem;
-            margin: 0 0 8px 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-        }
-
-        .slide p {
-            font-size: 1.1rem;
-            max-width: 90%;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            color: var(--text-muted);
-        }
-        
-        .audio-player-container {
-            width: 100%;
-            background: #1a1a1a;
-            padding: 16px;
-            box-sizing: border-box;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
-            z-index: 1000;
-        }
-
-        audio {
-            width: 100%;
-            display: block;
-            margin: auto;
-        }
-
-        /* ======================================================= */
-        /* DITAMBAHKAN: KODE UNTUK DESAIN RESPONSIVE (MOBILE) */
-        /* ======================================================= */
-
-        /* Untuk layar LEBAR (landscape & desktop), gunakan aspect ratio 16:9 */
-        @media (min-aspect-ratio: 16/10) {
-            .slideshow-container {
-                width: 85%; /* Tidak terlalu mepet ke sisi layar */
-                height: auto;
-                max-width: 1100px;
-                aspect-ratio: 16 / 9;
-                border-radius: 16px;
-            }
-        }
-        
-        /* Untuk layar TINGGI (potrait seperti di HP), penuhi layar */
-        @media (max-aspect-ratio: 16/10) {
-            .slideshow-container {
-                width: 100%;
-                height: 100%;
-                border-radius: 0;
-            }
-            .slide h2 {
-                font-size: 2rem; /* Ukuran font disesuaikan untuk layar kecil */
-            }
-            .slide p {
-                font-size: 1rem;
-            }
-        }
-
-    </style>
+    }
+  </style>
 </head>
 <body>
 
-    <div class="presentation-wrapper">
-        <div class="slideshow-container">
-            <div id="slide-1" class="slide active" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
-                <div class="slide-content">
-                    <h2>Wujudkan Kebebasan Finansial Anda</h2>
-                    <p>Sebuah konsep usaha modern oleh DVTEAM & Opalpi.</p>
-                </div>
-            </div>
-            <div id="slide-2" class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
-                <div class="slide-content">
-                    <h2>Apa Impian Terbesar Anda?</h2>
-                    <p>Rumah idaman, finansial berlimpah, kendaraan impian, atau menunaikan ibadah?</p>
-                </div>
-            </div>
-            <div id="slide-3" class="slide" style="background-image: url('https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
-                <div class="slide-content">
-                    <h2>Tantangan Usaha Konvensional</h2>
-                    <p>Modal besar, butuh keahlian, persaingan ketat, dan harus berpengalaman.</p>
-                </div>
-            </div>
-            <div id="slide-4" class="slide" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e2775d2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
-                <div class="slide-content">
-                    <h2>Solusi Telah Hadir</h2>
-                    <p>Memperkenalkan ekosistem sinergis: DVTEAM & Opalpi.</p>
-                </div>
-            </div>
-            <div id="slide-5" class="slide" style="background-image: url('https://images.unsplash.com/photo-1593435715538-7a602135d033?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
-                <div class="slide-content">
-                    <h2>Ekosistem yang Saling Menguntungkan</h2>
-                    <p>DVTEAM sebagai pemandu, Anda sebagai pengguna, dan Opalpi sebagai platform teknologi.</p>
-                </div>
-            </div>
-            <div id="slide-6" class="slide" style="background-image: url('https://images.unsplash.com/photo-1587614203976-365c7d6297e2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
-                <div class="slide-content">
-                    <h2>Keunggulan Konsep Modern</h2>
-                    <p>Mudah, Fleksibel, Aman, Terpercaya, dan Teruji Menguntungkan.</p>
-                </div>
-            </div>
-            <div id="slide-7" class="slide" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600');">
-                <div class="slide-content">
-                    <h2>Siap Memulai Perjalanan Anda?</h2>
-                    <p>Inilah arti kebebasan finansial yang sesungguhnya. Anda memiliki waktu dan uang secara bebas.</p>
-                </div>
-            </div>
-        </div>
+  <ul class="bubbles" id="bubble-container"></ul>
+
+  <div class="presentation-container" id="fullscreen-wrapper">
+    <h1>🎧 Presentasi Konsep Bisnis Modern</h1>
+    <div class="audio-visual">
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+      <div class="eq-bar"></div>
     </div>
-
-    <div class="audio-player-container">
-        <audio id="presentation-audio" controls>
-            <source src="Presentasi-Bag1.mp3" type="audio/mpeg">
-            Browser Anda tidak mendukung elemen audio.
-        </audio>
+    <h3>Oleh: Deka Sonjaya (DVTEAM)</h3>
+    <audio id="presentation" controls>
+      <source src="presentasi-bag1.mp3" type="audio/mpeg">
+      Browser Anda tidak mendukung audio.
+    </audio>
+    <div class="timestamps">
+      <button onclick="seek(18)">🎯 Impian Anda</button>
+      <button onclick="seek(62)">⚠️ Tantangan Usaha</button>
+      <button onclick="seek(77)">💡 Solusi Modern</button>
+      <button onclick="seek(154)">🚀 Keunggulan</button>
+      <button onclick="seek(183)">👉 Cara Memulai</button>
     </div>
-    
-    <script>
-        // Script JavaScript tidak ada perubahan, sudah baik.
-        document.addEventListener('DOMContentLoaded', () => {
-            const audio = document.getElementById('presentation-audio');
-            const slideCues = [
-                { time: 0,   slideId: 'slide-1' },
-                { time: 18,  slideId: 'slide-2' },
-                { time: 62,  slideId: 'slide-3' },
-                { time: 77,  slideId: 'slide-4' },
-                { time: 121, slideId: 'slide-5' },
-                { time: 154, slideId: 'slide-6' },
-                { time: 183, slideId: 'slide-7' },
-            ];
+  </div>
 
-            let currentSlideId = 'slide-1';
+<script>
+  // Fungsi untuk melompat ke bagian audio
+  function seek(seconds) {
+    const audioPlayer = document.getElementById('presentation');
+    audioPlayer.currentTime = seconds;
+    audioPlayer.play();
+  }
 
-            audio.addEventListener('timeupdate', () => {
-                const currentTime = audio.currentTime;
-                let activeCue = slideCues[0];
-
-                for (let i = 0; i < slideCues.length; i++) {
-                    if (currentTime >= slideCues[i].time) {
-                        activeCue = slideCues[i];
-                    } else {
-                        break;
-                    }
-                }
-                
-                if (activeCue.slideId !== currentSlideId) {
-                    const oldSlide = document.getElementById(currentSlideId);
-                    if (oldSlide) oldSlide.classList.remove('active');
-
-                    const newSlide = document.getElementById(activeCue.slideId);
-                    if (newSlide) newSlide.classList.add('active');
-
-                    currentSlideId = activeCue.slideId;
-                }
-            });
-
-            audio.addEventListener('seeking', () => {
-                if (audio.currentTime < slideCues[1].time) {
-                    const oldSlide = document.getElementById(currentSlideId);
-                    if (oldSlide) oldSlide.classList.remove('active');
-                    
-                    const firstSlide = document.getElementById(slideCues[0].slideId);
-                    if (firstSlide) firstSlide.classList.add('active');
-                    
-                    currentSlideId = slideCues[0].slideId;
-                }
-            });
+  // === Fungsi untuk Fullscreen ===
+  const fullscreenWrapper = document.getElementById('fullscreen-wrapper');
+  fullscreenWrapper.addEventListener('click', () => {
+    if (document.fullscreenElement) {
+        // Jika sudah fullscreen, tidak melakukan apa-apa atau bisa dibuat keluar
+        // document.exitFullscreen();
+    } else {
+        // Jika belum, masuk ke mode fullscreen
+        fullscreenWrapper.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
         });
-    </script>
+    }
+  }, { once: true }); // { once: true } membuat ini hanya bisa dijalankan satu kali
+
+  // === Fungsi untuk Animasi Gelembung ===
+  const bubbleContainer = document.getElementById('bubble-container');
+  const bubbleCount = 20; // Jumlah gelembung
+
+  for (let i = 0; i < bubbleCount; i++) {
+    const bubble = document.createElement('li');
+    bubble.classList.add('bubble');
+
+    const size = Math.random() * 60 + 20; // Ukuran 20px - 80px
+    const duration = Math.random() * 10 + 15; // Durasi 15s - 25s
+    const delay = Math.random() * 10; // Delay mulai 0s - 10s
+    const position = Math.random() * 98; // Posisi horizontal
+
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.left = `${position}%`;
+    bubble.style.animationDuration = `${duration}s`;
+    bubble.style.animationDelay = `${delay}s`;
+
+    bubbleContainer.appendChild(bubble);
+  }
+</script>
 
 </body>
 </html>
