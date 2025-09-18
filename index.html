@@ -1,196 +1,376 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentasi Eksklusif: Peluang Bisnis Modern</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .progress-bar-container:hover .progress-bar-thumb {
-            opacity: 1;
-        }
-        /* Animasi untuk latar belakang gradien */
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .animated-gradient {
-            background: linear-gradient(-45deg, #1f2937, #374151, #111827, #4b5563);
-            background-size: 400% 400%;
-            animation: gradient-animation 15s ease infinite;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentasi Eksklusif: Peluang Kebebasan Finansial Anda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-bg: #0f0c29;
+      --secondary-bg: #302b63;
+      --tertiary-bg: #24243e;
+      --accent-gold: #ffd700;
+      --accent-gold-hover: #e6c300;
+      --text-light: #f0f0f0;
+      --text-dark: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, var(--primary-bg), var(--secondary-bg), var(--tertiary-bg));
+      color: var(--text-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      transition: background 0.5s ease;
+    }
+
+    /* --- Splash Screen --- */
+    #splash-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    #splash-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #start-button {
+      padding: 18px 35px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      background-color: var(--accent-gold);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    #start-button:hover {
+      background-color: var(--accent-gold-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    }
+    
+    .splash-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .splash-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        opacity: 0.9;
+    }
+
+
+    /* --- Main Content --- */
+    #main-content {
+      max-width: 700px;
+      width: 95%;
+      margin: auto;
+      background: rgba(15, 12, 41, 0.5);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .header-title {
+      color: var(--accent-gold);
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .header-subtitle {
+        font-size: 1rem;
+        margin-bottom: 5px;
+        opacity: 0.8;
+    }
+    
+    .presenter-header {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        opacity: 0.7;
+        font-style: italic;
+    }
+
+    .audio-visual {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 20px;
+      height: 40px;
+      align-items: flex-end;
+    }
+
+    .eq-bar {
+      width: 8px;
+      background: linear-gradient(var(--accent-gold), var(--accent-gold-hover));
+      animation: equalize 1.2s infinite ease-in-out;
+      border-radius: 4px;
+    }
+    
+    .eq-bar:nth-child(1){animation-delay:0s;}
+    .eq-bar:nth-child(2){animation-delay:0.2s;}
+    .eq-bar:nth-child(3){animation-delay:0.4s;}
+    .eq-bar:nth-child(4){animation-delay:0.6s;}
+    .eq-bar:nth-child(5){animation-delay:0.8s;}
+
+    @keyframes equalize {
+      0%, 100% {height: 5px;}
+      50% {height: 40px;}
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .timestamps {
+      margin-top: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .timestamps button {
+      padding: 10px 15px;
+      border: 1px solid var(--accent-gold);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--accent-gold);
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .timestamps button:hover {
+      background: var(--accent-gold);
+      color: var(--text-dark);
+      transform: scale(1.05);
+    }
+    
+    .cta-wrapper {
+        margin-top: 30px;
+        border-top: 1px solid rgba(255, 215, 0, 0.2);
+        padding-top: 30px;
+    }
+    
+    #cta-button {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      background-color: var(--accent-gold);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    #cta-button:hover {
+      background-color: var(--accent-gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    }
+    
+    /* --- Modal Styles --- */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        display: none; /* Hidden by default */
+        justify-content: center;
+        align-items: center;
+        z-index: 200;
+    }
+
+    .modal-content {
+        background: var(--tertiary-bg);
+        padding: 40px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .close-button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: var(--text-light);
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    .modal-content h2 {
+        color: var(--accent-gold);
+        margin-bottom: 15px;
+    }
+    
+    .modal-content p {
+        margin-bottom: 25px;
+        opacity: 0.9;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    
+    .modal-link-button {
+        display: inline-block;
+        padding: 12px 25px;
+        background: var(--accent-gold);
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .modal-link-button:hover {
+        background: var(--accent-gold-hover);
+        transform: scale(1.05);
+    }
+
+  </style>
 </head>
-<body class="bg-slate-900 text-white antialiased">
+<body>
 
-    <div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 animated-gradient">
-        
-        <header class="text-center mb-8 md:mb-12">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300 mb-2">
-                Buka Potensi Kebebasan Finansial Anda
-            </h1>
-            <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto">
-                Dengarkan presentasi eksklusif kami dan temukan jalan menuju kesuksesan yang telah teruji, aman, dan mudah untuk dijalankan.
-            </p>
-        </header>
+  <div id="splash-screen">
+      <h2 class="splash-title">Selamat Datang</h2>
+      <p class="splash-subtitle">Anda akan mendengarkan presentasi tentang peluang untuk mengubah masa depan finansial Anda. Klik untuk memulai.</p>
+      <button id="start-button">▶ Mulai Presentasi</button>
+  </div>
 
-        <main class="w-full max-w-4xl">
-            <!-- Komponen Pemutar Audio -->
-            <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl shadow-2xl p-6 sm:p-8 border border-slate-700">
-                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                    <!-- 'Album Art' -->
-                    <div class="flex-shrink-0">
-                        <div class="w-40 h-40 md:w-48 md:h-48 bg-gradient-to-br from-blue-500 to-teal-400 rounded-lg flex items-center justify-center shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/80"><path d="M7 18V6l10 6-10 6Z"/><path d="M17 18V6"/></svg>
-                        </div>
-                    </div>
-
-                    <!-- Informasi dan Kontrol Audio -->
-                    <div class="w-full flex flex-col items-center md:items-start text-center md:text-left">
-                        <h2 class="text-xl sm:text-2xl font-bold text-white mb-1">Presentasi Konsep Bisnis Modern</h2>
-                        <p class="text-slate-400 mb-6">Oleh Deka Sonjaya, Tim Divinaga Persada</p>
-                        
-                        <!-- PENTING: Path audio diubah ke .mp3 untuk performa web yang lebih baik -->
-                        <audio id="audioPlayer" src="audio_lengkap.mp3" preload="metadata"></audio>
-
-                        <!-- Progress Bar -->
-                        <div id="progressContainer" class="w-full h-2 bg-slate-700 rounded-full cursor-pointer mb-2 group">
-                            <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-teal-400 rounded-full relative">
-                                <div class="progress-bar-thumb w-4 h-4 bg-white rounded-full absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                        </div>
-
-                        <!-- Waktu -->
-                        <div class="w-full flex justify-between text-xs text-slate-400 mb-4">
-                            <span id="currentTime">00:00</span>
-                            <span id="duration">00:00</span>
-                        </div>
-
-                        <!-- Tombol Kontrol -->
-                        <div class="flex items-center justify-center gap-6">
-                            <button id="playPauseBtn" class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-blue-500 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50">
-                                <!-- Ikon Play -->
-                                <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="ml-1"><path d="M8 5v14l11-7z"></path></svg>
-                                <!-- Ikon Pause -->
-                                <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="hidden"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Poin-Poin Utama -->
-            <section class="mt-12">
-                <h3 class="text-2xl font-bold text-center mb-8">Mengapa Anda Harus Mendengarkan?</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-slate-800/40 border border-slate-700 p-6 rounded-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
-                        <div class="inline-block p-3 bg-blue-500/20 text-blue-300 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                        </div>
-                        <h4 class="font-semibold mb-2">Mudah Dikerjakan</h4>
-                        <p class="text-sm text-slate-400">Hanya beberapa menit setiap hari tanpa mengganggu aktivitas utama Anda.</p>
-                    </div>
-                    <div class="bg-slate-800/40 border border-slate-700 p-6 rounded-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
-                        <div class="inline-block p-3 bg-teal-500/20 text-teal-300 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><shield><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></shield></svg>
-                        </div>
-                        <h4 class="font-semibold mb-2">Aman & Resmi</h4>
-                        <p class="text-sm text-slate-400">Bergabung dengan platform terkemuka yang sudah resmi dan berizin internasional.</p>
-                    </div>
-                    <div class="bg-slate-800/40 border border-slate-700 p-6 rounded-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
-                        <div class="inline-block p-3 bg-sky-500/20 text-sky-300 rounded-full mb-4">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
-                        </div>
-                        <h4 class="font-semibold mb-2">Teruji & Terbukti</h4>
-                        <p class="text-sm text-slate-400">Sistem yang telah terbukti memberikan keuntungan konsisten setiap hari.</p>
-                    </div>
-                    <div class="bg-slate-800/40 border border-slate-700 p-6 rounded-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
-                        <div class="inline-block p-3 bg-indigo-500/20 text-indigo-300 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h4 class="font-semibold mb-2">Dukungan Komunitas</h4>
-                        <p class="text-sm text-slate-400">Anda akan mendapatkan bimbingan dan dukungan penuh dari komunitas.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ajakan Bertindak (Call to Action) -->
-            <footer class="text-center mt-12">
-                <p class="text-lg text-slate-300 mb-6">Siap mengambil langkah pertama menuju masa depan yang lebih cerah?</p>
-                <a href="https://opalp.com/register?inviteId=3S7FNM" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 hover:shadow-blue-500/50 transition-all duration-300">
-                    Gabung Komunitas Kami Sekarang!
-                </a>
-                <p class="text-xs text-slate-500 mt-8">© 2025 Divi Team. Seluruh hak cipta dilindungi.</p>
-            </footer>
-        </main>
+  <div id="main-content">
+    <h1 class="header-title">Presentasi Peluang Bisnis Modern</h1>
+    <h3 class="header-subtitle">Oleh: Deka Sonjaya</h3>
+    <h4 class="presenter-header">Dipersembahkan oleh: DV Team Naga Persada</h4>
+    
+    <div class="audio-visual">
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+    </div>
+    
+    <audio id="presentation" controls>
+      <source src="audio_lengkap.mp3" type="audio/mpeg">
+      Browser Anda tidak mendukung elemen audio.
+    </audio>
+    
+    <div class="timestamps">
+      <button onclick="seek(25)">🎯 Impian Kita Semua</button>
+      <button onclick="seek(121)">⚠️ Masalah Ekonomi Saat Ini</button>
+      <button onclick="seek(157)">💡 Solusi Bisnis Modern</button>
+      <button onclick="seek(232)">🤝 Ekosistem DV & Opalpie</button>
+      <button onclick="seek(325)">🚀 3 Keunggulan Utama</button>
+      <button onclick="seek(386)">👉 Cara Memulai</button>
+      <button onclick="seek(407)">💰 Potensi Keuntungan</button>
+      <button onclick="seek(435)">🔢 Konsep 3 Langkah Mudah</button>
+      <button onclick="seek(466)">🏝️ Visi Kebebasan Finansial</button>
+      <button onclick="seek(590)">📣 Panggilan Aksi & Motivasi</button>
     </div>
 
-    <script>
-        const audio = document.getElementById('audioPlayer');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const playIcon = document.getElementById('playIcon');
-        const pauseIcon = document.getElementById('pauseIcon');
-        const progressBar = document.getElementById('progressBar');
-        const progressContainer = document.getElementById('progressContainer');
-        const currentTimeEl = document.getElementById('currentTime');
-        const durationEl = document.getElementById('duration');
+    <div class="cta-wrapper">
+        <button id="cta-button">SAYA TERTARIK & INGIN BERGABUNG!</button>
+    </div>
+  </div>
+  
+  <div id="cta-modal" class="modal-overlay">
+      <div class="modal-content">
+          <button id="close-modal-button" class="close-button">&times;</button>
+          <h2>Langkah Selanjutnya</h2>
+          <p>Segera Hubungi Anggota DVTEAM NP atau klik link di bawah ini.</p>
+          <a href="https://opalp.com//register?inviteId=3S7FNM" target="_blank" class="modal-link-button">Buka Link Pendaftaran</a>
+      </div>
+  </div>
 
-        function togglePlayPause() {
-            if (audio.paused) {
-                audio.play().catch(e => console.error("Audio play failed:", e));
-            } else {
-                audio.pause();
-            }
-        }
-        
-        playPauseBtn.addEventListener('click', togglePlayPause);
+<script>
+  const splashScreen = document.getElementById('splash-screen');
+  const startButton = document.getElementById('start-button');
+  const audioElement = document.getElementById('presentation');
+  const body = document.documentElement;
 
-        audio.addEventListener('play', () => {
-            playIcon.classList.add('hidden');
-            pauseIcon.classList.remove('hidden');
-        });
+  // Elemen untuk Modal
+  const ctaButton = document.getElementById('cta-button');
+  const modal = document.getElementById('cta-modal');
+  const closeModalButton = document.getElementById('close-modal-button');
 
-        audio.addEventListener('pause', () => {
-            playIcon.classList.remove('hidden');
-            pauseIcon.classList.add('hidden');
-        });
+  function openFullscreen() {
+    if (body.requestFullscreen) body.requestFullscreen();
+    else if (body.webkitRequestFullscreen) body.webkitRequestFullscreen();
+    else if (body.msRequestFullscreen) body.msRequestFullscreen();
+  }
 
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
+  startButton.addEventListener('click', () => {
+    audioElement.play();
+    openFullscreen();
+    splashScreen.classList.add('hidden');
+  });
 
-        audio.addEventListener('timeupdate', () => {
-            const { currentTime, duration } = audio;
-            if (duration) {
-                const progressPercent = (currentTime / duration) * 100;
-                progressBar.style.width = `${progressPercent}%`;
-            }
-            currentTimeEl.textContent = formatTime(currentTime);
-        });
+  function seek(seconds) {
+    audioElement.currentTime = seconds;
+    audioElement.play();
+  }
 
-        audio.addEventListener('loadedmetadata', () => {
-            durationEl.textContent = formatTime(audio.duration);
-        });
+  // Event listener untuk membuka modal
+  ctaButton.addEventListener('click', () => {
+      modal.style.display = 'flex';
+  });
 
-        progressContainer.addEventListener('click', (e) => {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            const duration = audio.duration;
-            if (duration) {
-                audio.currentTime = (clickX / width) * duration;
-            }
-        });
-    </script>
+  // Event listener untuk menutup modal
+  closeModalButton.addEventListener('click', () => {
+      modal.style.display = 'none';
+  });
+
+  // Juga tutup modal jika klik di luar area kontennya
+  modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+          modal.style.display = 'none';
+      }
+  });
+
+</script>
 </body>
 </html>
-
-
