@@ -160,13 +160,14 @@
 
     .timestamps {
       margin-top: 25px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
 
     .timestamps button {
-      padding: 12px 15px;
+      padding: 10px 15px;
       border: 1px solid var(--accent-gold);
       border-radius: 8px;
       background: transparent;
@@ -175,13 +176,13 @@
       font-weight: 600;
       font-family: 'Poppins', sans-serif;
       transition: all 0.3s ease;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     .timestamps button:hover {
       background: var(--accent-gold);
       color: var(--text-dark);
-      transform: scale(1.02);
+      transform: scale(1.05);
     }
     
     .cta-wrapper {
@@ -273,15 +274,6 @@
         background: var(--accent-gold-hover);
         transform: scale(1.05);
     }
-    
-    @media (min-width: 600px) {
-        .timestamps {
-            grid-template-columns: 1fr 1fr;
-        }
-        .timestamps button:last-child {
-            grid-column: 1 / -1; /* Make the last button span full width */
-        }
-    }
 
   </style>
 </head>
@@ -308,11 +300,16 @@
     </audio>
     
     <div class="timestamps">
-      <button onclick="seek(118)">⚠️ Mengapa Kita Butuh Solusi?</button>
-      <button onclick="seek(152)">💡 Solusi & Ekosistem Bisnis</button>
-      <button onclick="seek(312)">🚀 Keunggulan & Cara Kerja</button>
+      <button onclick="seek(30)">🎯 Impian Kita Semua</button>
+      <button onclick="seek(118)">⚠️ Masalah Ekonomi Saat Ini</button>
+      <button onclick="seek(152)">💡 Solusi Bisnis Modern</button>
+      <button onclick="seek(225)">🤝 Ekosistem DV & Opalpie</button>
+      <button onclick="seek(312)">🚀 3 Keunggulan Utama</button>
+      <button onclick="seek(363)">👉 Cara Memulai</button>
+      <button onclick="seek(374)">💰 Potensi Keuntungan</button>
+      <button onclick="seek(402)">🔢 Konsep 3 Langkah Mudah</button>
       <button onclick="seek(426)">🏝️ Visi Kebebasan Finansial</button>
-      <button onclick="seek(464)">📣 Kesimpulan & Panggilan Aksi</button>
+      <button onclick="seek(464)">📣 Panggilan Aksi & Motivasi</button>
     </div>
 
     <div class="cta-wrapper">
